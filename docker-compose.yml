@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  db:
+    build: 
+      context: db
+      dockerfile: Dockerfile
+    container_name: db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=root
+    networks:
+      - eposeanet
+
+networks:
+  eposeanet:
+    name: eposea_network
