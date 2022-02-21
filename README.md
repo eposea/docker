@@ -1,5 +1,5 @@
 # docker
-Docker for local development
+Docker for local development 🥑
 
 # run
 `docker-compose -f ### up --build -d`
