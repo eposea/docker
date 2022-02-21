@@ -1,0 +1,12 @@
+FROM alpine as source
+RUN apk add git
+RUN git clone --recurse-submodules https://github.com/eposea/aggregator-server.git
+
+FROM gradle:jdk11 as build
+COPY --from=source /aggregator-server/aggregator /aggregator
+WORKDIR /aggregator
+RUN gradle clean build
+
+FROM adoptopenjdk/openjdk11:jre
+COPY --from=build /aggregator/build/libs/aggregator-0.1-all.jar /app/app.jar
+CMD [ "java", "-jar", "/app/app.jar" ]

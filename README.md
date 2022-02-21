@@ -2,7 +2,7 @@
 Docker for local development
 
 # run
-`docker-compose up --build -d`
+`docker-compose -f ### up --build -d`
 
 # stop
-`docker-compose down -v --remove-orphans`
+`docker-compose -f ### down -v --remove-orphans`
